@@ -6,6 +6,7 @@ title = "Colt45s.dev"
 description = "Colt45s.dev is Colt45s' personal blog."
 sort_by = "date"
 date = "YYYY-mm-dd"
+generate_feed = true
 
 [markdown]
 highlight_code = true
