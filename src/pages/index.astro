@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+---
+
+<BaseLayout>
+  <section class="posts">
+    {posts.map((post) => (
+      <article class="post-item">
+        <a href={`/blog/${post.id}`}>
+          <div class="post-content">
+            <h2>{post.data.title}</h2>
+            {post.data.description && <p>{post.data.description}</p>}
+          </div>
+          <time datetime={post.data.date.toISOString()}>
+            {formatDate(post.data.date)}
+          </time>
+        </a>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+.posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-item {
+}
+
+.post-item a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.post-item a:hover {
+  opacity: 0.6;
+}
+
+.post-content {
+  min-width: 0;
+}
+
+.post-content h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.25rem 0;
+  color: var(--color-text);
+}
+
+.post-content p {
+  color: var(--color-text-muted);
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.post-item time {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .post-item a {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .post-item time {
+    order: -1;
+  }
+}
+</style>
