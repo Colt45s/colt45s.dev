@@ -1,6 +1,6 @@
 ---
-import ThemeToggle from '../components/ThemeToggle.tsx';
-import Search from '../components/Search.tsx';
+import ThemeToggle from '../components/theme-toggle.tsx';
+import Search from '../components/search.tsx';
 import { getCollection } from 'astro:content';
 
 interface Props {
@@ -311,16 +311,14 @@ hr {
   justify-content: center;
   width: 36px;
   height: 36px;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
+  border: none;
   background: transparent;
   color: var(--color-text-muted);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s;
 }
 
 .share-btn:hover {
-  border-color: var(--color-text-muted);
   color: var(--color-text);
 }
 

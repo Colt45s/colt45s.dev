@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/base-layout.astro';
 import { getCollection, render } from 'astro:content';
-import TableOfContents from '../../components/TableOfContents.tsx';
-import ReadingTime from '../../components/ReadingTime.tsx';
-import ShareButtons from '../../components/ShareButtons.tsx';
-import ScrollToTop from '../../components/ScrollToTop.tsx';
-import CodeCopy from '../../components/CodeCopy.tsx';
+import TableOfContents from '../../components/table-of-contents.tsx';
+import ReadingTime from '../../components/reading-time.tsx';
+import ShareButtons from '../../components/share-buttons.tsx';
+import ScrollToTop from '../../components/scroll-to-top.tsx';
+import CodeCopy from '../../components/code-copy.tsx';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
