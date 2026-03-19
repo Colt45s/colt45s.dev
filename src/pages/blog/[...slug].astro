@@ -27,7 +27,7 @@ const formatDate = (date: Date) => {
 };
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout title={post.data.title} description={post.data.description} ogImage={`${Astro.site}og/${post.id}.png`}>
   <article class="post">
     <header class="post-header">
       <div class="post-meta">
